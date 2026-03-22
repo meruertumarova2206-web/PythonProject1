@@ -5,7 +5,7 @@ fuel_price = float(input("Enter fuel price (KZT/L): "))
 
 litres_needed = distance * consumption/100
 fuel_cost = litres_needed * fuel_price
-cost_per_km = fuel_cost / distance
+cost_per_km = fuel_cost/distance
 
 print("=" * 30)
 print("      ROAD TRIP SUMMARY")
