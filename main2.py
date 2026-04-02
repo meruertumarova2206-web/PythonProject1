@@ -1,4 +1,4 @@
-driver_name = input("Enter driver name: ")
+name = input("Enter driver name: ")
 destination = input("Enter destination: ")
 distance = float(input("Enter distance (km): "))
 consumption = float(input("Enter fuel consumption (L/100km): "))
@@ -15,7 +15,7 @@ else:
     category = "Long trip"
 
 print("=" * 30)
-print(f"Driver : {driver_name}")
+print(f"Driver : {name}")
 print(f"Destination : {destination.upper()}")
 print(f"Distance : {distance} km")
 print(f"Fuel cost : {cost} KZT")
