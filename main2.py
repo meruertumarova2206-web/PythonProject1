@@ -28,7 +28,7 @@ cost_per_km = cost / distance
 
 for km in range(100, int(distance) + 1, 100):
     cum_cost = cost_per_km * km
-    print(f"{km} km → {cum_cost} KZT")
+    print(f"{km} km -> {cum_cost} KZT")
 
 print(f"\nDestination uppercase : {destination.upper()}")
 print(f"Destination lowercase : {destination.lower()}")
