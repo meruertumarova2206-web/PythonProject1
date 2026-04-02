@@ -2,10 +2,10 @@ driver_name = input("Enter driver name: ")
 destination = input("Enter destination: ")
 distance = float(input("Enter distance (km): "))
 consumption = float(input("Enter fuel consumption (L/100km): "))
-fuel_price = float(input("Enter fuel price (KZT/L): "))
+price = float(input("Enter fuel price (KZT/L): "))
 
 litres_needed = distance * consumption / 100
-fuel_cost = litres_needed * fuel_price
+cost = litres_needed * price
 
 if distance < 100:
     category = "Short trip"
@@ -18,13 +18,13 @@ print("=" * 30)
 print(f"Driver : {driver_name}")
 print(f"Destination : {destination.upper()}")
 print(f"Distance : {distance} km")
-print(f"Fuel cost : {fuel_cost} KZT")
+print(f"Fuel cost : {cost} KZT")
 print(f"Category : {category}")
 print("=" * 30)
 
 print("\nCost breakdown:")
 
-cost_per_km = fuel_cost / distance
+cost_per_km = cost / distance
 
 for km in range(100, int(distance) + 1, 100):
     cumulative_cost = cost_per_km * km
