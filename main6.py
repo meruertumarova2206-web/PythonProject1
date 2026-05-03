@@ -1,7 +1,7 @@
 import os
 import csv
 import json
-#1
+# 1
 class FileManager:
     def __init__(self, filename):
         self.filename = filename
@@ -24,7 +24,7 @@ class FileManager:
             print(f"Output folder created: {folder}/")
         else:
             print(f"Output folder already exists: {folder}/")
-#2
+# 2. DataLoader
 class DataLoader:
     def __init__(self, filename):
         self.filename = filename
@@ -47,14 +47,14 @@ class DataLoader:
 
     def preview(self, n=5):
         print(f"\nFirst {n} rows:")
-        print("------------------------------")
+        print("-" * 30)
 
         for i in range(min(n, len(self.students))):
             s = self.students[i]
             print(f"{s['student_id']} | {s['age']} | {s['gender']} | {s['country']} | GPA: {s['GPA']}")
 
-        print("------------------------------")
-#3
+        print("-" * 30)
+# 3. DataAnalyser
 class DataAnalyser:
     def __init__(self, students):
         self.students = students
@@ -70,29 +70,41 @@ class DataAnalyser:
             else:
                 country_counts[country] = 1
 
-        top3 = sorted(country_counts.items(), key=lambda x: (-x[1], x[0]))[:3]
+        top3 = sorted(country_counts.items(), key=lambda x: x[1], reverse=True)[:3]
+
+        top3_formatted = []
+        for country, count in top3:
+            top3_formatted.append({
+                "country": country,
+                "count": count
+            })
 
         self.result = {
+            "analysis": "Country Analysis",
+            "total_students": len(self.students),
             "total_countries": len(country_counts),
-            "country_counts": country_counts,
-            "top_3": top3
+            "top_3_countries": top3_formatted,
+            "all_countries": country_counts
         }
 
         return self.result
 
     def print_results(self):
         print("\n------------------------------")
-        print("Country Analysis")
-        print("------------------------------")
+        print("Students by Country")
+        print("-" * 30)
 
-        print("Total countries :", self.result["total_countries"])
+        for country, count in self.result["all_countries"].items():
+            print(f"{country} : {count}")
 
+        print("-" * 30)
         print("Top 3 Countries:")
-        for i, (country, count) in enumerate(self.result["top_3"], 1):
-            print(f"{i}. {country} : {count}")
 
-        print("------------------------------")
-#4
+        for i, item in enumerate(self.result["top_3_countries"], 1):
+            print(f"{i}. {item['country']} : {item['count']}")
+
+        print("-" * 30)
+# 4
 class ResultSaver:
     def __init__(self, result, output_path):
         self.result = result
@@ -107,12 +119,15 @@ class ResultSaver:
 
         except Exception as e:
             print("Error saving file:", e)
-#5
+
+
+# 5
 def main():
     fm = FileManager('students.csv')
+
     if not fm.check_file():
-        print('Stopping program.')
-        exit()
+        print("Stopping program.")
+        return
 
     fm.create_output_folder()
 
