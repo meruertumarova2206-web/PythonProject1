@@ -24,7 +24,7 @@ class FileManager:
             print(f"Output folder created: {folder}/")
         else:
             print(f"Output folder already exists: {folder}/")
-# 2. DataLoader
+# 2
 class DataLoader:
     def __init__(self, filename):
         self.filename = filename
@@ -54,7 +54,7 @@ class DataLoader:
             print(f"{s['student_id']} | {s['age']} | {s['gender']} | {s['country']} | GPA: {s['GPA']}")
 
         print("-" * 30)
-# 3. DataAnalyser
+# 3
 class DataAnalyser:
     def __init__(self, students):
         self.students = students
