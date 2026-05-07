@@ -1,7 +1,7 @@
 import os
 import csv
 import json
-
+# 1
 class FileManager:
     def __init__(self, filename):
         self.filename = filename
@@ -24,7 +24,7 @@ class FileManager:
             print(f"Output folder created: {folder}/")
         else:
             print(f"Output folder already exists: {folder}/")
-# 2
+# 2. DataLoader
 class DataLoader:
     def __init__(self, filename):
         self.filename = filename
@@ -36,14 +36,14 @@ class DataLoader:
         try:
             with open(self.filename, encoding="utf-8") as f:
                 reader = csv.DictReader(f)
-                self.students = list(reader)
+                self.students=list(reader)
 
-            print(f"Data loaded successfully: {len(self.students)} students")
+            print(f"Data loaded successfully: {len(self.studets) students}")
             return self.students
 
-        except FileNotFoundError:
-            print(f"Error: File '{self.filename}' not found.")
-            return []
+            except FileNotFoundError:
+                print("Error: File{self.students} not found.")
+                return[]
 
     def preview(self, n=5):
         print(f"\nFirst {n} rows:")
@@ -54,7 +54,7 @@ class DataLoader:
             print(f"{s['student_id']} | {s['age']} | {s['gender']} | {s['country']} | GPA: {s['GPA']}")
 
         print("-" * 30)
-# 3
+# 3. DataAnalyser
 class DataAnalyser:
     def __init__(self, students):
         self.students = students
